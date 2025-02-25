@@ -1,0 +1,36 @@
+:root {
+    --text-primary: #6b7558;
+    --light-cream: #fffcf3;
+    --bg-color: #ffd6e0;
+    --strong-pink: #fb9ab1;
+    --yellow: #fbedd3;
+    --green: #d7f1d9;
+    --font-famil: "Nerko One", serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Chiều cao full màn hình */
+    text-align: center;
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.Rectangle {
+    width: 80%;
+    height: 80%;
+    padding: 0px;
+    margin: 10px;
+}
