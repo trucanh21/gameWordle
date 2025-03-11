@@ -50,17 +50,32 @@
         </div>
       </div>
     </div>
-    <div id="showResult" class="Howtoplay hidden">
+
+    <!-- Thêm modal nhập nickname -->
+    <div id="nicknameModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Enter Your Nickname</h2>
+        <input type="text" id="nicknameInput" placeholder="Enter your nickname" maxlength="50">
+        <div class="modal-buttons">
+          <button class="btn start-game">Start Game</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="showResult" class="Howtoplay ">
         <p class="Congratulations">Congratulations !</p>
         <p>The word was :</p>
         <div class="boxDream">
-          <p class="dream">Dream</p>
+          <p class="dream" id="winningWord"></p>
         </div>
-        <button class="btn btn_playgame">Play game</button>
-        <button class="btn btn_home">Main menu</button>
+        
+        <div class="btn-group">
+            <button class="btn btn_rankings">View Rankings</button>
+            <button class="btn btn_home">Main menu</button>
+        </div>
         <img src="resources/images/Group1.svg" class="floating f-sk1" />
         <img src="resources/images/Group1.svg" class="floating f-sk2" />
-      </div>
+    </div>
     <img
       src="resources/images/strawberry-cake.png"
       class="floating f-strawberry1"

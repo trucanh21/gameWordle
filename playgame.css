@@ -19,7 +19,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     /* Chiều cao full màn hình */
     text-align: center;
     font-size: 16px;
@@ -99,7 +99,7 @@ body {
 .key.special {
     padding: 7px 14px;
     font-size: 1.2rem;
-    background-color:#fb9ab1;
+    background-color: #fb9ab1;
     color: white;
 }
 

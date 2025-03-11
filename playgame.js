@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function () {
+    // Kiểm tra xem có nickname không
+    const playerNickname = localStorage.getItem('playerNickname');
+    if (!playerNickname) {
+        alert('Please enter your nickname first!');
+        window.location.href = 'index.html';
+        return;
+    }
+
     let currentRow = 0;
     let currentCol = 0;
     const maxCols = 5;
@@ -10,10 +18,42 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function fetchSecretWord() {
         const response = await fetch("http://localhost:3000/word-of-the-day");
         const data = await response.json();
-        secretWord = data.word; // Lưu từ bí mật
-        console.log("Secret word:", secretWord); // Debug
+        secretWord = data.word;
+        console.log("Secret word:", secretWord);
     }
-    await fetchSecretWord(); // Gọi API khi tải trang
+    await fetchSecretWord();
+
+    // Hàm lưu kết quả với nickname đã lưu
+    async function saveResult(guesses) {
+        try {
+            const response = await fetch("http://localhost:3000/save-result", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nickname: playerNickname,
+                    guesses: currentRow + 1,
+                    word: secretWord
+                }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                // Lưu từ đã đoán và đánh dấu thắng
+                localStorage.setItem('winningWord', secretWord);
+                localStorage.setItem('gameWon', 'true');
+                // Xóa nickname sau khi lưu kết quả
+                localStorage.removeItem('playerNickname');
+                window.location.href = "index.html";
+            } else {
+                alert("Error saving your score. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error saving result:", error);
+            alert("Error saving your score. Please try again.");
+        }
+    }
 
     keys.forEach((key) => {
         key.addEventListener("click", () => {
@@ -61,17 +101,18 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
+    
+
     async function checkLetter() {
+        
         if (currentCol < maxCols) return;
         const currentBoxes = rows[currentRow].querySelectorAll(".Rectangle");
         
         let word = "";
-
         currentBoxes.forEach((box) => {
             word += box.innerText;
         });
 
-        // Kiểm tra từ hợp lệ
         const apiUrl = `http://localhost:3000/check/${word}`;
         try {
             const response = await fetch(apiUrl);
@@ -79,22 +120,20 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (!data.valid) {
                 alert("Từ không hợp lệ, thử lại! ❌");
-                console.log(response);
                 return;
             }
 
-            // So sánh với từ bí mật
             let correctCount = 0;
-            let secretWordArr = secretWord.split(""); // Chuyển thành mảng để đánh dấu
+            let secretWordArr = secretWord.split("");
 
             for (let i = 0; i < maxCols; i++) {
                 let letter = word[i];
                 let box = currentBoxes[i].parentElement;
 
                 if (letter === secretWord[i]) {
-                    box.style.backgroundColor = "lightgreen"; 
+                    box.style.backgroundColor = "lightgreen";
                     correctCount++;
-                    secretWordArr[i] = null; 
+                    secretWordArr[i] = null;
                 }
             }
 
@@ -102,28 +141,26 @@ document.addEventListener("DOMContentLoaded", async function () {
                 let letter = word[i];
                 let box = currentBoxes[i].parentElement;
 
-                if (box.style.backgroundColor === "lightgreen") continue; // Bỏ qua các ô đã đúng
+                if (box.style.backgroundColor === "lightgreen") continue;
 
                 if (secretWordArr.includes(letter)) {
-                    box.style.backgroundColor = "#FF9B9B"; // 🟨 Đúng chữ, sai vị trí
-                    secretWordArr[secretWordArr.indexOf(letter)] = null; // Đánh dấu là đã kiểm tra
+                    box.style.backgroundColor = "#FF9B9B";
+                    secretWordArr[secretWordArr.indexOf(letter)] = null;
                 } else {
-                    box.style.backgroundColor = "#FFD6A5"; // ⬜ Không có trong từ bí mật
+                    box.style.backgroundColor = "#FFD6A5";
                 }
             }
 
-            // Kiểm tra chiến thắng
             if (correctCount === maxCols) {
-                localStorage.setItem('gameWon', 'true');
-                window.location.href = "index.html"
-                console.log("🎉 Win! Bạn đã đoán đúng từ bí mật!");
-                alert("🎉 Win! Bạn đã đoán đúng từ bí mật!");
+                await saveResult(currentRow + 1);
             } else {
                 currentRow++;
                 currentCol = 0;
 
                 if (currentRow >= rows.length) {
                     alert(`Bạn đã thua! Từ đúng là: ${secretWord}`);
+                    localStorage.removeItem('playerNickname');
+                    window.location.href = "index.html";
                 }
             }
 
