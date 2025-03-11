@@ -6,6 +6,9 @@
     --yellow: #fbedd3;
     --green: #d7f1d9;
     --font-famil: "Nerko One", serif;
+    --green-color: #CBFFA9;
+    --pink-color: #FF9B9B;
+    --yellow-color: #FFFEC4;
 }
 
 body {
@@ -114,4 +117,121 @@ body {
     /* Màu nổi bật */
     transform: scale(1.1);
     box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .grid1 {
+        height: 100px;
+    }
+
+    .boxKey {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+        margin: 1px;
+        border-width: 2px;
+    }
+
+    .keyboard {
+        margin-top: 15px;
+        gap: 3px;
+    }
+
+    .kb_row {
+        gap: 3px;
+    }
+
+    .key {
+        font-size: 1.1rem;
+        padding: 8px 12px;
+        margin: 1px;
+    }
+
+    .key.special {
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+
+    .game-board {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid1 {
+        height: 80px;
+    }
+
+    .boxKey {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+        border-width: 2px;
+    }
+
+    .keyboard {
+        margin-top: 10px;
+        gap: 2px;
+    }
+
+    .kb_row {
+        gap: 2px;
+    }
+
+    .key {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+    }
+
+    .key.special {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+
+    .game-board {
+        margin-bottom: 10px;
+        transform: scale(0.95);
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
+/* Laptop and larger screens */
+@media screen and (min-width: 1024px) {
+    .grid1 {
+        height: 130px;
+    }
+
+    .boxKey {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .keyboard {
+        gap: 8px;
+    }
+
+    .kb_row {
+        gap: 8px;
+    }
+
+    .key {
+        padding: 15px 20px;
+    }
+
+    .key.special {
+        padding: 8px 16px;
+    }
+
+    .game-board {
+        margin: 30px 0;
+    }
+
+    .main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }

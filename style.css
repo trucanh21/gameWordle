@@ -28,8 +28,7 @@ body {
 }
 
 .gird1 {
-    width: 80%;
-    height: 80%;
+    width: 40rem;
     
 }
 
@@ -53,7 +52,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 
@@ -64,11 +63,10 @@ h2 {
     color: #FF9494;
     border: 2px solid #FF9494;
     padding: 10px 5px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 60px;
-    width: 140px;
+    padding: 10px 20px;
     margin: 5px 0;
 }
 
@@ -94,69 +92,84 @@ button:hover{
     /* Quay lại vị trí ban đầu */
 }
 
-.floating-strawberry {
+.floating{
     position: absolute;
-    /* Giúp ảnh nằm tự do trên background */
-    top: 20%;
-    /* Đặt vị trí trên màn hình */
-    left: 50%;
-    /* Canh giữa */
-    transform: translateX(-50%);
-    /* Căn giữa theo chiều ngang */
-    width: 100px;
-    /* Điều chỉnh kích thước quả dâu */
+    width: 25px;
+    transform: translate(-50%);
     animation: float 3s ease-in-out infinite;
-    /* Hiệu ứng trôi nổi */
 }
 
-.floating-strawberry1 {
-    position: absolute;
+.f-strawberry {
+    top: 20%;
+    left: 50%;
+    width: 100px;
+}
+
+.f-strawberry1 {
     top: 20%;
     left: 20%;
-    width: 100px;
-    transform: translateX(-50%);
     width: 80px;
-    animation: float 3s ease-in-out infinite;
 }
 
-.floating-strawberry2 {
-    position:absolute;
+.f-strawberry2 {
     width: 80px;
-    transform: translateX(-50%);
     top: 50%;
     left: 70%;
-    animation: float 3s ease-in-out infinite;
 }
 
-.floating-strawberry3 {
-    position: absolute;
+.f-strawberry3 {
     width: 80px;
-    transform: translateX(-50%);
     top: 60%;
     left: 25%;
-    animation: float 3s ease-in-out infinite;
 }
 
-/* -------------- How to play ------------- */
+.f-sk1 {
+    left: 37%;
+    top: 60%;
+    width: 25px;
+}
 
+.f-sk2 {
+    left: 60%;
+    top: 57%;
+    width: 25px;
+}
+/* -------------- How to play ------------- */
 .hidden {
     display: none;
 }
 
-#Howtoplay {
+.Howtoplay {
     background-color: white;
-    padding: 30px 30px;
+    width: 600px;
+    height: 482px;
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
     border: 2px solid #6b7558;
     border-radius: 10px;
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
 }
 
+/* .showResult{
+    display: flex;
+} */
+
+.Congratulations {
+    font-size: 2.5rem;
+    padding-bottom: 40px;
+}
+
+.boxDream {
+    border: 2px solid #FAC95D;
+    border-radius: 10px;
+    margin: 5px 0px 20px 0px;
+}
+
+.dream {
+    padding: 3px 35px;
+    color: #FAC95D;
+}
 .close {
     width: 20px;
     height: 20px;
@@ -202,6 +215,112 @@ button:hover{
 .img_example {
     width: 70%;
     height: 70%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .gird1 {
+        width: 90%;
+        max-width: 25rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .Howtoplay {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .content {
+        gap: 10px;
+    }
+
+    .img_example {
+        width: 90%;
+    }
+
+    .Congratulations {
+        font-size: 2rem;
+        padding-bottom: 20px;
+    }
+
+    .floating {
+        width: 15px;
+    }
+
+    .f-strawberry1,
+    .f-strawberry2,
+    .f-strawberry3 {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gird1 {
+        width: 95%;
+        max-width: 20rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .Howtoplay {
+        padding: 15px;
+    }
+
+    .content > div:nth-child(2),
+    .content > div:nth-child(3),
+    .content > div:nth-child(4) {
+        gap: 5px;
+    }
+
+    .Congratulations {
+        font-size: 1.8rem;
+        padding-bottom: 15px;
+    }
+
+    .floating {
+        display: none;
+    }
+}
+
+/* Laptop and larger screens */
+@media screen and (min-width: 1024px) {
+    .gird1 {
+        width: 40rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        min-width: 200px;
+    }
 }
 
 

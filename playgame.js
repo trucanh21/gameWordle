@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 let box = currentBoxes[i].parentElement;
 
                 if (letter === secretWord[i]) {
-                    box.style.backgroundColor = "green"; // 🟩 Đúng chữ, đúng vị trí
+                    box.style.backgroundColor = "lightgreen"; 
                     correctCount++;
-                    secretWordArr[i] = null; // Đánh dấu là đã kiểm tra
+                    secretWordArr[i] = null; 
                 }
             }
 
@@ -102,18 +102,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                 let letter = word[i];
                 let box = currentBoxes[i].parentElement;
 
-                if (box.style.backgroundColor === "green") continue; // Bỏ qua các ô đã đúng
+                if (box.style.backgroundColor === "lightgreen") continue; // Bỏ qua các ô đã đúng
 
                 if (secretWordArr.includes(letter)) {
-                    box.style.backgroundColor = "yellow"; // 🟨 Đúng chữ, sai vị trí
+                    box.style.backgroundColor = "#FF9B9B"; // 🟨 Đúng chữ, sai vị trí
                     secretWordArr[secretWordArr.indexOf(letter)] = null; // Đánh dấu là đã kiểm tra
                 } else {
-                    box.style.backgroundColor = "gray"; // ⬜ Không có trong từ bí mật
+                    box.style.backgroundColor = "#FFD6A5"; // ⬜ Không có trong từ bí mật
                 }
             }
 
             // Kiểm tra chiến thắng
             if (correctCount === maxCols) {
+                localStorage.setItem('gameWon', 'true');
+                window.location.href = "index.html"
                 console.log("🎉 Win! Bạn đã đoán đúng từ bí mật!");
                 alert("🎉 Win! Bạn đã đoán đúng từ bí mật!");
             } else {
