@@ -60,7 +60,7 @@ app.post("/check-nickname", async (req, res) => {
             'SELECT P_Nickname FROM player WHERE P_Nickname = ?',
             [nickname]
         );
-        
+
         if (rows.length > 0) {
             // Nickname đã tồn tại, kiểm tra xem hôm nay đã chơi chưa
             const today = new Date().toISOString().split('T')[0];
@@ -68,9 +68,9 @@ app.post("/check-nickname", async (req, res) => {
                 'SELECT * FROM daily_plays WHERE nickname = ? AND play_date = ?',
                 [nickname, today]
             );
-            
-            res.json({ 
-                exists: true, 
+
+            res.json({
+                exists: true,
                 canPlay: playToday.length === 0,
                 message: playToday.length > 0 ? "You have already played today" : "Welcome back!"
             });

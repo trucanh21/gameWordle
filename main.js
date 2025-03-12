@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
         container.classList.add("hidden");
         showResult.classList.remove("hidden");
         showResult.style.display = "flex";
-        
+
         // Hiển thị từ đã đoán
         const winningWord = localStorage.getItem('winningWord');
         if (winningWord) {
             winningWordElement.textContent = winningWord;
         }
-        
+
         // Xóa dữ liệu khỏi localStorage
         localStorage.removeItem("gameWon");
         localStorage.removeItem("winningWord");

@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     keys.forEach((key) => {
         key.addEventListener("click", () => {
             const letter = key.innerText;
-            if(letter === 'ENTER'){
+            if (letter === 'ENTER') {
                 checkLetter();
-            }else if(letter === "DELETE"){
+            } else if (letter === "DELETE") {
                 deleteLetter();
-            }else {
+            } else {
                 addLetter(letter);
             }
         });
@@ -101,13 +101,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    
+
 
     async function checkLetter() {
-        
+
         if (currentCol < maxCols) return;
         const currentBoxes = rows[currentRow].querySelectorAll(".Rectangle");
-        
+
         let word = "";
         currentBoxes.forEach((box) => {
             word += box.innerText;
