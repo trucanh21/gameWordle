@@ -1,7 +1,8 @@
 {
-  "name": "wordle-game",
+  "name": "wordle-game-backend",
   "version": "1.0.0",
-  "description": "Wordle Game with Multiplayer Features",
+  "description": "Wordle Game Backend API",
+  "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
     "dev": "nodemon api/index.js"

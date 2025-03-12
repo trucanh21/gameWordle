@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'Jiyeon12345!', // Thay đổi mật khẩu MySQL của bạn
-    database: 'wordle_game'
+    database: 'wordle_game',
 });
 
 module.exports = pool.promise(); 
