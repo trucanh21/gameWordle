@@ -15,6 +15,7 @@ A multiplayer version of the popular word-guessing game Wordle, where players ca
   - [Installation](#installation)
   - [Running Locally](#running-locally)
 - [Author](#author)
+- [Deployment](#deployment)
 
 ## Overview
 
@@ -123,3 +124,25 @@ npm run dev
 - Original Wordle game by Josh Wardle
 - Font 'Nerko One' from Google Fonts
 - Icons and images from [source]
+
+## Deployment
+
+### Frontend (Vercel)
+
+1. Fork this repository
+2. Sign up on [Vercel](https://vercel.com)
+3. Import your repository
+4. Configure:
+   - Root Directory: frontend
+   - Framework Preset: Other
+5. Deploy
+
+### Backend (Render)
+
+1. Sign up on [Render](https://render.com)
+2. Create a new Web Service
+3. Connect your repository
+4. Configure:
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+5. Add Environment Variables from `.env`
