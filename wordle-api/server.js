@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 const words = require("./words.json");
 const db = require('./config/db');
+const words_target = require("./target_words.json");
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -12,9 +14,10 @@ let secretWord = getRandomWord();
 let lastWordChange = new Date().setHours(0, 0, 0, 0); // Đặt thời gian reset từ mới vào đầu ngày
 
 function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.words.length);
-    return words.words[randomIndex].toUpperCase();
+    const randomIndex = Math.floor(Math.random() * words_target.words_target.length);
+    return words_target.words_target[randomIndex].toUpperCase();
 }
+
 
 // Kiểm tra và reset từ mới mỗi ngày
 function checkAndResetWord() {
@@ -151,4 +154,4 @@ app.get("/leaderboard", async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log("✅ Server chạy tại http://localhost:3000"));
+app.listen(PORT, () => console.log("✅ Server chạy tại http://localhost:3000"));
